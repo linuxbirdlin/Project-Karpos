@@ -1,0 +1,20 @@
+@media only screen and (max-width : 767px) {
+    .files img,
+    .files canvas {
+        max-width : none;
+    }
+    .table-responsive {
+        border : none;
+    }
+}
+.table-responsive > .table > tbody > tr > td {
+    white-space : normal;
+}
+.table-responsive {
+    overflow-x : visible;
+}
+@media (max-width: 767px) {
+    .fileupload-buttonbar .toggle, .files .toggle, .files .btn span {
+        display: block;
+    }
+}
