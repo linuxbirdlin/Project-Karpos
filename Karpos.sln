@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpos.Web", "Karpos.Web\Karpos.Web.csproj", "{A31E9E48-7329-4B8D-BF32-D2D513D4D39B}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Karpos.Database", "Karpos.Database\Karpos.Database.sqlproj", "{F5F35C17-6547-40D8-B0D7-3EC7F6E78C9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{A31E9E48-7329-4B8D-BF32-D2D513D4D39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A31E9E48-7329-4B8D-BF32-D2D513D4D39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A31E9E48-7329-4B8D-BF32-D2D513D4D39B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F35C17-6547-40D8-B0D7-3EC7F6E78C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F35C17-6547-40D8-B0D7-3EC7F6E78C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F35C17-6547-40D8-B0D7-3EC7F6E78C9A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F5F35C17-6547-40D8-B0D7-3EC7F6E78C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F35C17-6547-40D8-B0D7-3EC7F6E78C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F35C17-6547-40D8-B0D7-3EC7F6E78C9A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
