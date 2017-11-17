@@ -107,16 +107,20 @@
     <Content Include="Content\css\alertmessage.css" />
     <Content Include="Content\css\animate1.css" />
     <Content Include="Content\css\animated-masonry-gallery.css" />
+    <Content Include="Content\css\app.css" />
     <Content Include="Content\css\blueimp-gallery.min.css" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\buttons.css" />
+    <Content Include="Content\css\buttons_sass.css" />
     <Content Include="Content\css\calendar.css" />
     <Content Include="Content\css\calendar_custom.css" />
     <Content Include="Content\css\calendar_custom2.css" />
     <Content Include="Content\css\chartist.css" />
     <Content Include="Content\css\complex_forms.css" />
+    <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\custom_css\advanced_modals.css" />
     <Content Include="Content\css\custom_css\amcharts.css" />
     <Content Include="Content\css\custom_css\bootstrap_tables.css" />
@@ -228,6 +232,8 @@
     <Content Include="Content\css\tables.css" />
     <Content Include="Content\css\timeline.css" />
     <Content Include="Content\css\timeline2.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\2.jpg" />
     <Content Include="Content\img\3.jpg" />
     <Content Include="Content\img\4.jpg" />
@@ -405,6 +411,7 @@
     <Content Include="Content\img\us_states_flags\wy.png" />
     <Content Include="Content\img\weather.jpg" />
     <Content Include="Content\js\animated-masonry-gallery.js" />
+    <Content Include="Content\js\app.js" />
     <Content Include="Content\js\backstretch.js" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
@@ -478,6 +485,9 @@
     <Content Include="Content\js\dashboard2.js" />
     <Content Include="Content\js\demo-mock.js" />
     <Content Include="Content\js\demo.js" />
+    <Content Include="Content\js\holder.js" />
+    <Content Include="Content\js\holder.min.js" />
+    <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\jquery.isotope.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\jquery.sessionTimeout.min.js" />
@@ -486,12 +496,14 @@
     <Content Include="Content\js\lockscreen2.js" />
     <Content Include="Content\js\metisMenu.js" />
     <Content Include="Content\js\raphael-min.js" />
+    <Content Include="Content\js\raphael.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -499,15 +511,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Content\css\.gitignore" />
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
-    <Content Include="Content\data\example_data.tsv" />
-    <Content Include="Content\sass\bootstrap\bootstrap.scss" />
-    <Content Include="Content\sass\bootstrap\_variables.scss" />
-    <Content Include="Content\sass\buttons\buttons.scss" />
-    <Content Include="Content\sass\buttons\_options.scss" />
-    <Content Include="Content\sass\custom.scss" />
+    <Content Include="Content\fonts\.gitignore" />
+    <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\img\.gitignore" />
+    <Content Include="Content\js\.gitignore" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -517,7 +541,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
