@@ -11,6 +11,12 @@
         <AssociationConnector Association="KarposModel.FK_Contact_Organization" ManuallyRouted="false" />
         <AssociationConnector Association="KarposModel.FK_Login_Contact" ManuallyRouted="false" />
         <AssociationConnector Association="KarposModel.FK_Organization_Organization" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KarposModel.Request" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="KarposModel.RequestComment" Width="1.5" PointX="7.5" PointY="7.375" />
+        <EntityTypeShape EntityType="KarposModel.RequestHistory" Width="1.5" PointX="7.5" PointY="4.875" />
+        <AssociationConnector Association="KarposModel.FK_Request_Contact" />
+        <AssociationConnector Association="KarposModel.FK_RequestComment_Request" />
+        <AssociationConnector Association="KarposModel.FK_RequestHistory_Request" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

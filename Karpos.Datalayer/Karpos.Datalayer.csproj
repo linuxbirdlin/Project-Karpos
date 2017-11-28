@@ -67,6 +67,7 @@
     <Compile Include="Contact.cs">
       <DependentUpon>KarposEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="KarposEntityContext.cs" />
     <Compile Include="KarposEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +90,15 @@
       <DependentUpon>KarposEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request.cs">
+      <DependentUpon>KarposEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestComment.cs">
+      <DependentUpon>KarposEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestHistory.cs">
+      <DependentUpon>KarposEntityModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="KarposEntityModel.edmx">

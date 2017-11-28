@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KarposModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KarposModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="Guid" />
           </Key>
           <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OrginizationGuid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -29,6 +29,33 @@
           <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OrginizationGuid" Type="uniqueidentifier" />
           <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" />
+          <Property Name="RequestedOn" Type="datetime" Nullable="false" />
+          <Property Name="RequestedBy" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestComment">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RequestGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestHistory">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RequestGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_Contact_Organization">
           <End Role="Organization" Type="Self.Organization" Multiplicity="1">
@@ -70,10 +97,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Request_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="RequestedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestComment_Request">
+          <End Role="Request" Type="Self.Request" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RequestComment" Type="Self.RequestComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="RequestComment">
+              <PropertyRef Name="RequestGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHistory_Request">
+          <End Role="Request" Type="Self.Request" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RequestHistory" Type="Self.RequestHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="RequestHistory">
+              <PropertyRef Name="RequestGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="KarposModelStoreContainer">
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestComment" EntityType="Self.RequestComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestHistory" EntityType="Self.RequestHistory" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Contact_Organization" Association="Self.FK_Contact_Organization">
             <End Role="Organization" EntitySet="Organization" />
             <End Role="Contact" EntitySet="Contact" />
@@ -86,9 +158,20 @@
             <End Role="Organization" EntitySet="Organization" />
             <End Role="Organization1" EntitySet="Organization" />
           </AssociationSet>
+          <AssociationSet Name="FK_Request_Contact" Association="Self.FK_Request_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestComment_Request" Association="Self.FK_RequestComment_Request">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="RequestComment" EntitySet="RequestComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHistory_Request" Association="Self.FK_RequestHistory_Request">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="RequestHistory" EntitySet="RequestHistory" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KarposModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -98,9 +181,10 @@
           </Key>
           <Property Name="Guid" Type="Guid" Nullable="false" />
           <Property Name="OrginizationGuid" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Organization" Relationship="Self.FK_Contact_Organization" FromRole="Contact" ToRole="Organization" />
           <NavigationProperty Name="Logins" Relationship="Self.FK_Login_Contact" FromRole="Contact" ToRole="Login" />
+          <NavigationProperty Name="Requests" Relationship="KarposModel.FK_Request_Contact" FromRole="Contact" ToRole="Request" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -179,7 +263,96 @@
             <End Role="Organization" EntitySet="Organizations" />
             <End Role="Organization1" EntitySet="Organizations" />
           </AssociationSet>
+          <EntitySet Name="Requests" EntityType="KarposModel.Request" />
+          <EntitySet Name="RequestComments" EntityType="KarposModel.RequestComment" />
+          <EntitySet Name="RequestHistories" EntityType="KarposModel.RequestHistory" />
+          <AssociationSet Name="FK_Request_Contact" Association="KarposModel.FK_Request_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestComment_Request" Association="KarposModel.FK_RequestComment_Request">
+            <End Role="Request" EntitySet="Requests" />
+            <End Role="RequestComment" EntitySet="RequestComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestHistory_Request" Association="KarposModel.FK_RequestHistory_Request">
+            <End Role="Request" EntitySet="Requests" />
+            <End Role="RequestHistory" EntitySet="RequestHistories" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="RequestedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RequestedBy" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="KarposModel.FK_Request_Contact" FromRole="Request" ToRole="Contact" />
+          <NavigationProperty Name="RequestComments" Relationship="KarposModel.FK_RequestComment_Request" FromRole="Request" ToRole="RequestComment" />
+          <NavigationProperty Name="RequestHistories" Relationship="KarposModel.FK_RequestHistory_Request" FromRole="Request" ToRole="RequestHistory" />
+        </EntityType>
+        <EntityType Name="RequestComment">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="RequestGuid" Type="Guid" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="KarposModel.FK_RequestComment_Request" FromRole="RequestComment" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="RequestHistory">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="RequestGuid" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="KarposModel.FK_RequestHistory_Request" FromRole="RequestHistory" ToRole="Request" />
+        </EntityType>
+        <Association Name="FK_Request_Contact">
+          <End Type="KarposModel.Contact" Role="Contact" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="KarposModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="RequestedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestComment_Request">
+          <End Type="KarposModel.Request" Role="Request" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="KarposModel.RequestComment" Role="RequestComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="RequestComment">
+              <PropertyRef Name="RequestGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestHistory_Request">
+          <End Type="KarposModel.Request" Role="Request" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="KarposModel.RequestHistory" Role="RequestHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="RequestHistory">
+              <PropertyRef Name="RequestGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -211,6 +384,36 @@
                 <ScalarProperty Name="Guid" ColumnName="Guid" />
                 <ScalarProperty Name="OrginizationGuid" ColumnName="OrginizationGuid" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="KarposModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+                <ScalarProperty Name="RequestedOn" ColumnName="RequestedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestComments">
+            <EntityTypeMapping TypeName="KarposModel.RequestComment">
+              <MappingFragment StoreEntitySet="RequestComment">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="RequestGuid" ColumnName="RequestGuid" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestHistories">
+            <EntityTypeMapping TypeName="KarposModel.RequestHistory">
+              <MappingFragment StoreEntitySet="RequestHistory">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RequestGuid" ColumnName="RequestGuid" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

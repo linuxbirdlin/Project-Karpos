@@ -18,6 +18,7 @@ namespace Karpos.Datalayer
         public Contact()
         {
             this.Logins = new HashSet<Login>();
+            this.Requests = new HashSet<Request>();
         }
     
         public System.Guid Guid { get; set; }
@@ -27,5 +28,7 @@ namespace Karpos.Datalayer
         public virtual Organization Organization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Login> Logins { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Request> Requests { get; set; }
     }
 }

@@ -28,5 +28,8 @@ namespace Karpos.Datalayer
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<RequestComment> RequestComments { get; set; }
+        public virtual DbSet<RequestHistory> RequestHistories { get; set; }
     }
 }
