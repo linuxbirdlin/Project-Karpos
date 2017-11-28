@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-fw fa-table"></i> Data Table
+                </h3>
+                <span class="pull-right">
+                    <i class="fa fa-fw fa-chevron-up clickable"></i>
+                    <i class="fa fa-fw fa-times removepanel clickable"></i>
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="sample_1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row"><div class="col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                            Name
+                                        : activate to sort column descending" style="width: 181px;">
+                                                Name
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="email: activate to sort column ascending" style="width: 315px;">email</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="
+                                            Phone
+                                        : activate to sort column ascending" style="width: 112px;">
+                                                Phone
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="
+                                            Department
+                                        : activate to sort column ascending" style="width: 134px;">
+                                                Department
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 78px;">Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Aileen Hand</td>
+                                            <td>Aileen.Hand52@yahoo.com</td>
+                                            <td>495-265-2018</td>
+                                            <td>Automotive</td>
+                                            <td>39495</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Alfred Koepp</td>
+                                            <td>Alfred_Koepp@hotmail.com</td>
+                                            <td>025-399-0305</td>
+                                            <td>Baby</td>
+                                            <td>823</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Ali Reinger</td>
+                                            <td>Ali25@hotmail.com</td>
+                                            <td>777-088-6923</td>
+                                            <td>Outdoors</td>
+                                            <td>6895</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Amos Gottlieb</td>
+                                            <td>Amos.Gottlieb57@hotmail.com</td>
+                                            <td>067-740-2584</td>
+                                            <td>Kids</td>
+                                            <td>40248</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Brett Olson</td>
+                                            <td>Brett59@hotmail.com</td>
+                                            <td>031-668-8313</td>
+                                            <td>Outdoors</td>
+                                            <td>24327</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Brittany Dibbert</td>
+                                            <td>Brittany_Dibbert@hotmail.com</td>
+                                            <td>662-842-8983</td>
+                                            <td>Music</td>
+                                            <td>293</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Charlie Tillman</td>
+                                            <td>Charlie97@yahoo.com</td>
+                                            <td>560-033-8903</td>
+                                            <td>Beauty</td>
+                                            <td>24886</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Cordie Funk</td>
+                                            <td>Cordie.Funk60@yahoo.com</td>
+                                            <td>978-284-8680</td>
+                                            <td>Grocery</td>
+                                            <td>36814</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Dominic Leffler</td>
+                                            <td>Dominic.Leffler94@yahoo.com</td>
+                                            <td>572-920-5685</td>
+                                            <td>Movies</td>
+                                            <td>34222</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Doug Senger</td>
+                                            <td>Doug.Senger12@hotmail.com</td>
+                                            <td>619-213-3654</td>
+                                            <td>Music</td>
+                                            <td>3166</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 10 of 40 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="sample_1_previous"><a href="#" aria-controls="sample_1" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="sample_1" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="sample_1" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="sample_1" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="sample_1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button next" id="sample_1_next"><a href="#" aria-controls="sample_1" data-dt-idx="5" tabindex="0">Next</a></li></ul></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

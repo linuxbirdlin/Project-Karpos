@@ -39,5 +39,11 @@ namespace Karpos.Web.Controllers
             }
 
         }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
     }
 }

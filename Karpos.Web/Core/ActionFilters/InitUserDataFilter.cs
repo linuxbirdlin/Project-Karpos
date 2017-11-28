@@ -32,7 +32,7 @@ namespace Karpos.Web.Core.ActionFilters
                     var userGuid = Guid.Parse(filterContext.HttpContext.Session["UserGuid"].ToString());
                     viewBag.Contact = KarposEntityContext.Instance.Logins.FirstOrDefault(n => n.Guid == userGuid).Contact;
 
-                    viewBag.Autheticated = true;
+                    viewBag.Authenticated = true;
                 }
             }
 

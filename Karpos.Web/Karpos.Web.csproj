@@ -995,6 +995,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Core\ActionFilters\InitUserDataFilter.cs" />
     <Compile Include="Core\Base\BaseController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1040,6 +1041,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
